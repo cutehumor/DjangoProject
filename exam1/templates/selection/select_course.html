@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Course</title>
+</head>
+<body>
+    <h2>Select Course</h2>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% else %}
+    <form action="{% url 'select_course' student_id=student_id %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="student_id" value="{{ student_id }}">
+        <label for="course">Select Course:</label>
+        <select name="course" id="course">
+            {% for course in courses %}
+            <option value="{{ course.id }}">{{ course.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Select">
+    </form>
+    {% endif %}
+</body>
+</html>

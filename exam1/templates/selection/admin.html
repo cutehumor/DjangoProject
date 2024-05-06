@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+    <h2>Admin Panel</h2>
+    <h3>Student Information:</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Class Name</th>
+                <th>Student ID</th>
+                <th>Selected Courses</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.class_name }}</td>
+                <td>{{ student.student_id }}</td>
+                <td>
+                    <ul>
+                        {% for course in student.courses %}
+                        <li>{{ course }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <form action="{% url 'delete_student' student.student_id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

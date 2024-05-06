@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+    <h2>Welcome, {{ student.name }}</h2>
+    <p><a href="{% url 'select_course' student_id=student.student_id %}">Select Course</a></p>
+    <p><a href="{% url 'selected_courses' student_id=student.student_id %}">My Selected Courses</a></p>
+</body>
+</html>
