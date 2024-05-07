@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <!-- 表单，使用 POST 方法将输入的文本内容提交给 post_redirect 视图函数处理 -->
+    <form action="{% url 'myapp:post_redirect' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="text">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
