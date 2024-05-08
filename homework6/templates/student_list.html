@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息</title>
+</head>
+<body>
+    <h1>学生信息</h1>
+    <ul>
+        {% for student in students %}
+        <li>{{ student.name }} - {{ student.roll_number }} - {{ student.age }}</li>
+        {% endfor %}
+    </ul>
+    <!-- 显示上一页、下一页链接 -->
+    <div>
+        {% if students.has_previous %}
+            <a href="?page=1">首页</a>
+            <a href="?page={{ students.previous_page_number }}">上一页</a>
+        {% endif %}
+        <span>{{ current_page }} / {{ total_pages }}</span>
+        {% if students.has_next %}
+            <a href="?page={{ students.next_page_number }}">下一页</a>
+            <a href="?page={{ total_pages }}">尾页</a>
+        {% endif %}
+    </div>
+</body>
+</html>
